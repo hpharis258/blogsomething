@@ -5,6 +5,11 @@ import Home from './pages/home';
 import About from './pages/about';
 import Create from './pages/createBlog';
 import Edit from './pages/editBlog';
+import Donate from './pages/donate';
+import Auth from './pages/auth';
+import Support from './pages/support';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -15,7 +20,9 @@ root.render(
           <Route exact path='/create' element={<Create/>} />
           <Route exact path='/edit' element={<Edit/>} />
           <Route exact path='/about' element={<About/>} />
-
+          <Route exact path='/donate' element={<Donate/>} />
+          <Route exact path='/auth' element={<Auth/>} />
+          <Route exact path='/support' element={<Support/>} />
       </Routes>
 
     </BrowserRouter>
