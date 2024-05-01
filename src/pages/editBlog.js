@@ -1,3 +1,5 @@
+import AppNavbar from '../components/navbar';
+
 function Edit() {
     return (
       <div >

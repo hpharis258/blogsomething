@@ -7,6 +7,11 @@ function Home() {
     return (
      <>
      <AppNavbar/>
+
+     <div>
+
+        <h1>Home</h1>
+     </div>
      </>
     );
   }

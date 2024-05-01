@@ -1,8 +1,14 @@
+import AppNavbar from '../components/navbar';
+
 function Support() {
     return (
-      <div >
-      Support
-      </div>
+        <>
+        <AppNavbar />
+            <div >
+                Support
+            </div>
+        </>
+     
     );
   }
   

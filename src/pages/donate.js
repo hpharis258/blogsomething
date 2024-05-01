@@ -1,8 +1,14 @@
+import AppNavbar from '../components/navbar';
+
 function Donate() {
     return (
-      <div >
-      Buy me a coffee 
-      </div>
+        <>
+        <AppNavbar />
+            <div >
+                Buy me a coffee 
+            </div>
+        </>
+     
     );
   }
   

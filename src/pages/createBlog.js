@@ -1,8 +1,14 @@
+import AppNavbar from '../components/navbar';
+
 function Create() {
     return (
-      <div >
-      Create Blog
-      </div>
+        <>  
+        <AppNavbar />    
+            <div >
+                Create Blog
+            </div>
+        </>
+   
     );
   }
   
