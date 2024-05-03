@@ -8,6 +8,8 @@ import Offcanvas from 'react-bootstrap/Offcanvas';
 import React, { useState } from 'react';
 import { supabase } from '../database/database';
 import { useEffect } from 'react';
+import Toast from 'react-bootstrap/Toast';
+import ToastContainer from 'react-bootstrap/ToastContainer';
 
 function AppNavbar() {
     const [session, setSession] = useState(null);
@@ -22,10 +24,12 @@ function AppNavbar() {
         })
         return () => subscription.unsubscribe()
       }, [])
+     
+           
     if(!session){
         return (
             <>
-              
+             
                 <Navbar key={1} expand={'md'} className="bg-body-tertiary mb-3">
                   <Container fluid>
                     <Navbar.Brand href="/">Blogsomething.com</Navbar.Brand>
@@ -111,7 +115,9 @@ function AppNavbar() {
                             <NavDropdown.Item href="/support">
                               Support
                             </NavDropdown.Item>
-                            <NavDropdown.Item onClick={async () => { await supabase.auth.signOut()}}>
+                            <NavDropdown.Item onClick={async () => { 
+                                await supabase.auth.signOut();
+                                }}>
                               Log out
                             </NavDropdown.Item>
                             <NavDropdown.Divider />
