@@ -61,7 +61,7 @@ function AppNavbar() {
                             </NavDropdown.Item>
                            
                             <NavDropdown.Divider />
-                            <NavDropdown.Item href="/donate">
+                            <NavDropdown.Item href="https://buymeacoffee.com/haroldas">
                               Buy me a coffee
                             </NavDropdown.Item>
                           </NavDropdown>
@@ -121,7 +121,7 @@ function AppNavbar() {
                               Log out
                             </NavDropdown.Item>
                             <NavDropdown.Divider />
-                            <NavDropdown.Item href="/donate">
+                            <NavDropdown.Item href="https://buymeacoffee.com/haroldas">
                               Buy me a coffee
                             </NavDropdown.Item>
                           </NavDropdown>

@@ -9,7 +9,8 @@ import Donate from './pages/donate';
 import Auth from './pages/auth';
 import Support from './pages/support';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
+import './css/main.css';
+import ViewBlog from './pages/viewBlog'; 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -23,6 +24,7 @@ root.render(
           <Route exact path='/donate' element={<Donate/>} />
           <Route exact path='/auth' element={<Auth/>} />
           <Route exact path='/support' element={<Support/>} />
+          <Route exact path='/viewBlog' element={<ViewBlog/>} />
       </Routes>
 
     </BrowserRouter>

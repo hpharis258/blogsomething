@@ -10,7 +10,7 @@ function Auth() {
       
         <>
         <AppNavbar />
-        <div class="d-flex justify-content-center">
+        <div style={{marginTop: "10%"}} class="d-flex justify-content-center">
             <AppAuth />
         </div>
 
