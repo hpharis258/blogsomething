@@ -1,17 +1,25 @@
 import React from 'react';
-import navbar from '../components/navbar';
 import AppNavbar from '../components/navbar';
+import AppFooter from '../components/footer';
 
 function Home() {
 
     return (
      <>
-     <AppNavbar/>
+      <AppNavbar/>
+     <div className='vh-100 container'>
+         
 
-     <div>
+
 
         <h1>Home</h1>
+
+        
      </div>
+        
+        
+        <AppFooter/>
+   
      </>
     );
   }

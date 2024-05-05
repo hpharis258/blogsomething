@@ -1,44 +1,48 @@
 
 
 p{ 
-    font-family: "Briem Hand", cursive;
-    font-optical-sizing: auto;
+    font-family: "Roboto", sans-serif;
     font-weight: 400;
     font-style: normal;
 }
   
 h1{ 
-    font-family: "Briem Hand", cursive;
-    font-optical-sizing: auto;
+    font-family: "Roboto", sans-serif;
     font-weight: 800;
     font-style: normal;
 }
 
 h4{ 
-    font-family: "Briem Hand", cursive;
-    font-optical-sizing: auto;
+    font-family: "Roboto", sans-serif;
     font-weight: 700;
     font-style: normal;
 }
 
 ul{ 
-    font-family: "Briem Hand", cursive;
-    font-optical-sizing: auto;
+    font-family: "Roboto", sans-serif;
     font-weight: 400;
     font-style: normal;
 }
 button{
-    color: white;
-    background-color: #4CAF50;
+    color: black;
     border-radius: 45%;
+    font-size: 36px;
+    
 }
-button:hover{
-    background-color: #45a049;
+
+.wrapper {
+    min-height: 100%;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+  }
+
+
+#logoutText{
+    font-size: 30px;
+    color: rgb(58, 116, 76);
+    margin: 20px;
 }
-#logoutButton{
-    margin-left: 90%;
-    margin-top: 20%;
-}
+
 
 #homeLink{
     margin: 20px;
@@ -47,6 +51,12 @@ button:hover{
     text-decoration: none;
     
     
+}
+#logoutButton:hover{
+    background-color: red;
+    color: white;
+    border-radius: 45%;
+    font-size: 36px;
 }
 
 #createLink{
@@ -61,36 +71,16 @@ button:hover{
 
 #aboutLink{
     margin:0;
-    background-color: #4CAF50;
     color: white;
     text-decoration: none;
-    font-size: 21px;
-    border: solid 2px black;
-    border-radius: 45%;
-    padding-left: 10px;
-    padding-right: 10px;
-    padding-top: 1px;
-    padding-bottom: 1px;
+    font-size: 30px;
 }
 
-#aboutLink:hover{
-    background-color: #45a049;
-}
 
 #supportLink{
     margin: 20px;
-    background-color: #4CAF50;
     color: white;
     text-decoration: none;
-    font-size: 21px;
-    border: solid 2px black;
-    border-radius: 45%;
-    padding-left: 10px;
-    padding-right: 10px;
-    padding-top: 1px;
-    padding-bottom: 1px;
-}
-
-#supportLink:hover{
-    background-color: #45a049;
+    font-size: 30px;
+    
 }

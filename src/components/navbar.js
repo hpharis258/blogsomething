@@ -115,6 +115,9 @@ function AppNavbar() {
                             <NavDropdown.Item href="/support">
                               Support
                             </NavDropdown.Item>
+                            <NavDropdown.Item href="/settings">
+                              Settings
+                            </NavDropdown.Item>
                             <NavDropdown.Item onClick={async () => { 
                                 await supabase.auth.signOut();
                                 }}>

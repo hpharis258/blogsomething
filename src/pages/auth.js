@@ -1,20 +1,21 @@
 import AppNavbar from '../components/navbar';
 import AppAuth from '../database/database';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Container from 'react-bootstrap/Container'
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
+import AppFooter from '../components/footer';
 
 function Auth() {
     return (
       
         <>
         <AppNavbar />
-        <div style={{marginTop: "10%"}} class="d-flex justify-content-center">
+        <div class="d-flex justify-content-center">
             <AppAuth />
         </div>
 
-           
+        
+            <AppFooter />
+
+       
     
         </>
     

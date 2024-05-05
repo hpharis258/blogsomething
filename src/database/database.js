@@ -29,12 +29,13 @@ function AppAuth() {
   }, [])
   
     if(!session) {
-      return <Auth supabaseClient={supabase} providers={Email} appearance={{ theme: ThemeSupa }} />
+      return (<div style={{marginTop: '10%'}}> <Auth supabaseClient={supabase} providers={Email} appearance={{ theme: ThemeSupa }} /> </div>)
     }else{
         return(
             <>
-            <div className='container'>
+            <div className='container justify-content-center text-center'>
                 <h1>Welcome {session.user.email}</h1>
+                <h3>What would you like to do today?</h3>
 
                 
 
@@ -56,35 +57,38 @@ function AppAuth() {
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>
-      <img src='https://images.pexels.com/photos/4207707/pexels-photo-4207707.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'/>
+      <img src='https://images.pexels.com/photos/2882509/pexels-photo-2882509.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'/>
         <Carousel.Caption>
-          <h3>Third slide label</h3>
+        <Link id='aboutLink' to={'/about'} >About</Link>
           <p>
-            Praesent commodo cursus magna, vel scelerisque nisl consectetur.
+            Go to the about page to learn more about us!
+          </p>
+        </Carousel.Caption>
+      </Carousel.Item>
+      <Carousel.Item>
+      <img src='https://images.pexels.com/photos/5697262/pexels-photo-5697262.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'/>
+        <Carousel.Caption>
+        <Link id='supportLink' to={'/support'}>Support</Link>
+          <p>
+            Go to the support page to contact us!
+          </p>
+        </Carousel.Caption>
+      </Carousel.Item>
+      <Carousel.Item>
+      <img src='https://images.pexels.com/photos/134065/pexels-photo-134065.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'/>
+        <Carousel.Caption>
+        <button id='logoutButton' onClick={async () => {
+                        await supabase.auth.signOut()
+                        }}>Sign Out</button>
+          <p id='logoutText'>
+            Hope to see you soon!
           </p>
         </Carousel.Caption>
       </Carousel.Item>
     </Carousel>
 
-                <div className='row'>
-                    
-                  
-
-                 
-                    <div className='col'>
-                     <Link id='aboutLink' to={'/about'} >About</Link>
-                    </div>
-                        <div className='col'>
-                        <Link id='supportLink' to={'/support'}>Support</Link>
-                        </div>
-                        
-                       
-                       
-                      
-                </div>
-                <button id='logoutButton' onClick={async () => {
-                        await supabase.auth.signOut()
-                        }}>Sign Out</button>
+               
+               
               
             </div>
             </>
