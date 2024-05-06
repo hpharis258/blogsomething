@@ -20,22 +20,65 @@ function Create() {
     const handleSubmit = async (title, content) => {
         if(!title){
             setIsTitleValid(true);
-            alert('Add a title!')
+            Notiflix.Report.failure(
+                'Error',
+                'Add a title!',
+                'Okay',
+            );
             return
         }
         if(!content){
             setIsContentValid(true);
-            alert('Add some content!')
+            Notiflix.Report.failure(
+                'Error',
+                'Add some content!',
+                'Okay',
+            );
             return
         }
+        // Upload Image
+        const fileInput = document.getElementById('formFileLg');
+        console.log(fileInput)
+        const file = fileInput.files[0];
+        const fileName = file.name+session.user.id+Date.now();
+        const filePath = `blogs/${fileName}`;
+        //alert(typeof(file))
+        console.log(file)
+        const {data} = await supabase
+        .storage
+        .from('images')
+        .upload(filePath, file, {
+            cacheControl: '3600',
+            upsert: false
+        })
+        //console.log(data)
+        let ImageURL = "https://nssawtgybrwtsvhhsohw.supabase.co/storage/v1/object/public/" + data.fullPath;
+        createblogRow(title, content, ImageURL);
+        // then((data) => {
+        //     
+        //     // Create the blog in db with the image url
+            
+        // })
+
+    
+        
+
+        // const { dataImageUpload, errorImageUpload } = await supabase
+        // .storage
+        // .from('images')
+        // .upload(filePath, decode(file), {
+        //   contentType: 'image/png'
+        // })
+            
+       
+    };
+
+    async function createblogRow(title, content, ImageURL){
+
         const { data, error } = await supabase.from('blogs').insert(
-            { title: title, blog: content, user: session.user.id },
+            { title: title, blog: content, user: session.user.id, imageURL: ImageURL },
           )
-          if(error){
-              console.log(error)
-          } else {
-              console.log(data)
-          }
+         
           Notiflix.Report.success(
             'Success',
             'Blog Created!',
@@ -95,6 +138,10 @@ function Create() {
                                 <Form.Label>Content</Form.Label>
                                 <Form.Control isInvalid={isContentValid} as="textarea" rows={3} value={content} onChange={(changeEvent) => {setContent(changeEvent.target.value); setIsContentValid(false)}} placeholder='Something you want to share with the world!'/>
                         </Form.Group>
+                        <Form.Group controlId="formFileLg" className="mb-3">
+                            <Form.Label>Post Image</Form.Label>
+                            <Form.Control accept='image/*' type="file"  />
+                        </Form.Group> 
                         <Button onClick={() => {handleSubmit(title, content)}} variant="primary">Submit</Button>
                     </Form>
             </div>

@@ -11,6 +11,7 @@ import { faCircleUp } from "@fortawesome/free-solid-svg-icons";
 import {Row} from 'react-bootstrap';
 import { faCircleDown } from "@fortawesome/free-solid-svg-icons";
 import { useState } from 'react';
+import Notiflix from 'notiflix';
 
 async function GetBlog(blogID) {
 //console.log(blogID)
@@ -30,7 +31,11 @@ const { data, error } = await supabase
 }
 async function handleUpvote(blogID, currentUser, data) {
     if(data.upvoted_by?.includes(currentUser)){
-        alert('You have already upvoted this blog')
+        Notiflix.Report.failure(
+            'Error',
+            'You have already upvoted this blog',
+            'Okay',
+        );
         return
     }
     if(!data.upvoted_by){
@@ -39,13 +44,23 @@ async function handleUpvote(blogID, currentUser, data) {
     data.upvoted_by.push(currentUser)
   
     await supabase.from('blogs').update({upvoted_by:  data.upvoted_by}).eq('id', blogID);
-    alert('Upvoted!')
-    window.location.reload();
+    Notiflix.Report.success(
+        'Success',
+        'Upvoted!',
+        'Okay',
+        () => {
+            window.location.reload();
+        }
+    );
 };
 
 async function handleDownvote(blogID, currentUser, data) {
-    if(data.downvoted_by?.includes(currentUser)){  
-        alert('You have already downvoted this blog')
+    if(data.downvoted_by?.includes(currentUser)){ 
+        Notiflix.Report.failure(
+            'Error',
+            'You have already downvoted this blog',
+            'Okay',
+        ); 
         return
     }
     if(!data.downvoted_by){
@@ -53,8 +68,14 @@ async function handleDownvote(blogID, currentUser, data) {
     }
     data.downvoted_by?.push(currentUser)
     await supabase.from('blogs').update({downvoted_by:  data.downvoted_by}).eq('id', blogID);
-    alert('Downvoted!')
-    window.location.reload();
+    Notiflix.Report.success(
+        'Success',
+        'Downvoted!',
+        'Okay',
+        () => {
+            window.location.reload();
+        }
+    );
 };
 
 const ViewBlog = () => {
