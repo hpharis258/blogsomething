@@ -32,7 +32,7 @@ function AppNavbar() {
              
                 <Navbar key={1} expand={'md'} className="bg-body-tertiary mb-3">
                   <Container fluid>
-                    <Navbar.Brand href="/">Blogsomething.com</Navbar.Brand>
+                    <Navbar.Brand href="/">BlogSomething.com</Navbar.Brand>
                     <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${'md'}`} />
                     <Navbar.Offcanvas
                       id={`offcanvasNavbar-expand-${'md'}`}
@@ -88,7 +88,7 @@ function AppNavbar() {
               
                 <Navbar key={1} expand={'md'} className="bg-body-tertiary mb-3">
                   <Container fluid>
-                    <Navbar.Brand href="/">Blogsomething.com</Navbar.Brand>
+                    <Navbar.Brand href="/">BlogSomething.com</Navbar.Brand>
                     <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${'md'}`} />
                     <Navbar.Offcanvas
                       id={`offcanvasNavbar-expand-${'md'}`}
