@@ -6,6 +6,8 @@ import { useState, useEffect } from 'react';
 import { Card } from 'react-bootstrap';
 import {Row} from 'react-bootstrap';
 import {Button} from 'react-bootstrap';
+import Pagination from 'react-bootstrap/Pagination';
+import Notiflix from 'notiflix';
 
 async function getBlogs(start, end) {
     const { data, error } = await supabase
@@ -21,10 +23,40 @@ async function getBlogs(start, end) {
     }
 };
 
+function goToNextpage (currentPage ,start, end, setStart, setEnd, setCurrentPage, blogs) {
+    if(blogs.length < 5){
+        Notiflix.Report.failure(
+            'Error',
+            'You are already on the last page',
+            'Okay',
+        );
+        return
+    }
+    setStart(start + 5);
+    setEnd(end + 5);
+    setCurrentPage(currentPage + 1);
+
+}
+
+function goToPrevpage (currentPage ,start, end, setStart, setEnd, setCurrentPage) {
+    if(currentPage === 1){
+        Notiflix.Report.failure(
+            'Error',
+            'You are already on the first page',
+            'Okay',
+        );
+        return
+    }
+    setStart(start - 5);
+    setEnd(end - 5);
+    setCurrentPage(currentPage - 1);
+}
+
 function Home() {
     const [blogs, setBlogs] = useState([]);
+    const [currentPage, setCurrentPage] = useState(1);
     const [start, setStart] = useState(0);
-    const [end, setEnd] = useState(10);
+    const [end, setEnd] = useState(4);
     const [isLoading, setIsLoading] = useState(true);
     useEffect(() => {
         getBlogs(start, end).then((data) => {
@@ -72,6 +104,11 @@ function Home() {
                    
                     )
                 })}
+                <Pagination>
+                    <Pagination.Prev onClick={() => goToPrevpage(currentPage, start, end, setStart, setEnd, setCurrentPage)} />
+                    <Pagination.Item>{currentPage}</Pagination.Item>
+                    <Pagination.Next onClick={() => goToNextpage(currentPage, start, end, setStart, setEnd, setCurrentPage, blogs)} />
+                </Pagination>
             </div>
             <AppFooter/>
             </>
