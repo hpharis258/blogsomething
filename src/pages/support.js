@@ -19,6 +19,26 @@ function Support() {
         e.preventDefault();
         document.getElementById('submitBtn').disabled = true;
         document.getElementById('submitBtn').innerHTML = 'Loading...';
+        if(!email){
+            Notiflix.Report.failure(
+                'Error',
+                'Add an email!',
+                'Okay',
+            );
+            document.getElementById('submitBtn').disabled = false;
+            document.getElementById('submitBtn').innerHTML = 'send message';
+            return
+        }
+        if(!message){
+            Notiflix.Report.failure(
+                'Error',
+                'Add a message!',
+                'Okay',
+            );
+            document.getElementById('submitBtn').disabled = false;
+            document.getElementById('submitBtn').innerHTML = 'send message';
+            return
+        }
         let fData = {
             service_id: process.env.REACT_APP_EMAILJS_SERVICE_ID,
             template_id: process.env.REACT_APP_EMAILJS_TEMPLATE_ID,

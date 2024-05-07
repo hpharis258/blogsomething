@@ -36,10 +36,14 @@ function Create() {
             );
             return
         }
+        document.getElementById('submitBtn').disabled = true;
+        document.getElementById('submitBtn').innerHTML = 'Loading...';
         // Upload Image
         const fileInput = document.getElementById('formFileLg');
-        console.log(fileInput)
-        const file = fileInput.files[0];
+        //console.log(fileInput)
+        const file = fileInput?.files[0];
+        console.log(file)
+        if(file != null && file != undefined){
         const fileName = file.name+session.user.id+Date.now();
         const filePath = `blogs/${fileName}`;
         //alert(typeof(file))
@@ -53,8 +57,13 @@ function Create() {
         })
         //console.log(data)
         let ImageURL = "https://nssawtgybrwtsvhhsohw.supabase.co/storage/v1/object/public/" + data.fullPath;
-        createblogRow(title, content, ImageURL);
-        // then((data) => {
+    
+        createblogRow(title, content, session.user.email ,ImageURL);
+    }
+    else{
+        createblogRow(title, content, session.user.email ,"");
+    }
+            // then((data) => {
         //     
         //     // Create the blog in db with the image url
             
@@ -73,10 +82,10 @@ function Create() {
        
     };
 
-    async function createblogRow(title, content, ImageURL){
+    async function createblogRow(title, content, author, ImageURL){
 
         const { data, error } = await supabase.from('blogs').insert(
-            { title: title, blog: content, user: session.user.id, imageURL: ImageURL },
+            { title: title, blog: content, user: session.user.id, imageURL: ImageURL, Author: author},
           )
          
           Notiflix.Report.success(
@@ -142,7 +151,7 @@ function Create() {
                             <Form.Label>Post Image</Form.Label>
                             <Form.Control accept='image/*' type="file"  />
                         </Form.Group> 
-                        <Button onClick={() => {handleSubmit(title, content)}} variant="primary">Submit</Button>
+                        <Button id='submitBtn' onClick={() => {handleSubmit(title, content)}} variant="primary">Submit</Button>
                     </Form>
             </div>
               

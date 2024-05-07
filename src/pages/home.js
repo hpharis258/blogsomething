@@ -78,7 +78,7 @@ function Home() {
                     return (
                         <div className='container' key={blog.id}>
                         <Card>
-                        <Card.Header>Author: {blog.user}</Card.Header>
+                        <Card.Header>Author: {blog.Author}</Card.Header>
                             
                             <Card.Body>
                                 <Card.Title>{blog.title}</Card.Title>
@@ -93,6 +93,7 @@ function Home() {
                                    
                                     <div style={{width: 200}} >Upvote Count: {blog.upvoted_by?.length || 0}</div>
                                     <div style={{width: 200}} >Downvote Count: {blog.downvoted_by?.length || 0}</div>
+                                    {/* <div style={{width: 200}} >{blog.country  == null ? "No Country added" : "Country: " + blog.country }</div> */}
                                 </Row>
                             </Card.Body>
                             

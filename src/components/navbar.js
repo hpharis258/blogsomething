@@ -120,6 +120,7 @@ function AppNavbar() {
                             </NavDropdown.Item>
                             <NavDropdown.Item onClick={async () => { 
                                 await supabase.auth.signOut();
+                                window.location.href = '/';
                                 }}>
                               Log out
                             </NavDropdown.Item>
