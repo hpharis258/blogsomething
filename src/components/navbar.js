@@ -11,8 +11,18 @@ import { useEffect } from 'react';
 import Toast from 'react-bootstrap/Toast';
 import ToastContainer from 'react-bootstrap/ToastContainer';
 
+async function handleSearch(searchTerm) {
+    if(!searchTerm){
+        return
+    }
+    alert(searchTerm)
+    window.location.href = `/search?searchTerm=${searchTerm}`;
+
+}
+
 function AppNavbar() {
     const [session, setSession] = useState(null);
+    const [searchTerm, setSearchTerm] = useState('');
     useEffect(() => {
         supabase.auth.getSession().then(({ data: { session } }) => {
           setSession(session)
@@ -72,8 +82,10 @@ function AppNavbar() {
                             placeholder="Search"
                             className="me-2"
                             aria-label="Search"
+                            value={searchTerm}
+                            onChange={(e) => setSearchTerm(e.target.value)}
                           />
-                          <Button variant="outline-success">Search</Button>
+                          <Button onClick={() => handleSearch(searchTerm)} variant="outline-success">Search</Button>
                         </Form>
                       </Offcanvas.Body>
                     </Navbar.Offcanvas>
@@ -136,8 +148,10 @@ function AppNavbar() {
                             placeholder="Search"
                             className="me-2"
                             aria-label="Search"
+                            value={searchTerm}
+                            onChange={(e) => setSearchTerm(e.target.value)}
                           />
-                          <Button variant="outline-success">Search</Button>
+                          <Button onClick={() =>handleSearch(searchTerm)} variant="outline-success">Search</Button>
                         </Form>
                       </Offcanvas.Body>
                     </Navbar.Offcanvas>
