@@ -13,6 +13,7 @@ import './css/main.css';
 import ViewBlog from './pages/viewBlog'; 
 import Settings from './pages/settings';
 import SearchPage from './pages/search';
+import AI from './pages/ai';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -28,7 +29,8 @@ root.render(
           <Route exact path='/viewBlog' element={<ViewBlog/>} />
           <Route exact path='/settings' element={<Settings/>} />
           <Route exact path='/search' element={<SearchPage/>} />
-          <Route exact path='/*' element={<PageNotFound/>} />
+          <Route exact path='/search/*' element={<SearchPage/>} />
+          <Route exact path='/ai' element={<AI/>} />
       </Routes>
 
     </BrowserRouter>

@@ -130,6 +130,9 @@ function AppNavbar() {
                             <NavDropdown.Item href="/settings">
                               Settings
                             </NavDropdown.Item>
+                            <NavDropdown.Item href="/settings">
+                              AI Blog Generator
+                            </NavDropdown.Item>
                             <NavDropdown.Item onClick={async () => { 
                                 await supabase.auth.signOut();
                                 window.location.href = '/';
