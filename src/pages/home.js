@@ -13,7 +13,7 @@ async function getBlogs(start, end) {
     const { data, error } = await supabase
     .from('blogs')
     .select('*')
-    .range(start, end);
+    .range(start, end).order('upvoted_by', {ascending: true});
     if (error) {
         console.log(error)
         return error;
@@ -67,7 +67,11 @@ function Home() {
     }, [start, end])
     if(isLoading){
         return (
-            <div>Loading...</div>
+            <>
+            <AppNavbar/>
+            <div><h1>Loading...</h1></div>
+            <AppFooter/>
+            </>
         )
     }else{
         return (
@@ -76,7 +80,7 @@ function Home() {
             <div className='vh-100 container'>
                 {blogs.map((blog) => {
                     return (
-                        <div className='container' key={blog.id}>
+                        <div style={{marginTop: 10, marginBottom:10}} className='container' key={blog.id}>
                         <Card>
                         <Card.Header>Author: {blog.Author}</Card.Header>
                             

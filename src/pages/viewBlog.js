@@ -130,7 +130,7 @@ const ViewBlog = () => {
             <AppNavbar />
             <div className='container'>
                 <Card>
-                <Card.Header>Author: {data[0].user}</Card.Header>
+                <Card.Header>Author: {data[0].Author}</Card.Header>
                     
                     <Card.Body>
                         <Card.Title>{data[0].title}</Card.Title>

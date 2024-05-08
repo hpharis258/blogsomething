@@ -15,7 +15,7 @@ async function handleSearch(searchTerm) {
     if(!searchTerm){
         return
     }
-    alert(searchTerm)
+    
     window.location.href = `/search?searchTerm=${searchTerm}`;
 
 }
@@ -150,6 +150,7 @@ function AppNavbar() {
                             aria-label="Search"
                             value={searchTerm}
                             onChange={(e) => setSearchTerm(e.target.value)}
+                            onKeyDown={(e) => {e.key === 'Enter' && handleSearch(searchTerm)}}
                           />
                           <Button onClick={() =>handleSearch(searchTerm)} variant="outline-success">Search</Button>
                         </Form>
