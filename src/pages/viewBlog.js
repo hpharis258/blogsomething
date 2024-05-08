@@ -130,7 +130,7 @@ const ViewBlog = () => {
             <AppNavbar />
             <div className='container'>
                 <Card>
-                <Card.Header>Author: {data[0].Author}</Card.Header>
+                <Card.Header>Author: {data[0].Author} {data[0].user == session.user.id ? <Button style={{marginLeft: "74%"}}>Edit Blog</Button> : ""}</Card.Header>
                     
                     <Card.Body>
                         <Card.Title>{data[0].title}</Card.Title>

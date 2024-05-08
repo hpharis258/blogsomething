@@ -130,7 +130,7 @@ function AppNavbar() {
                             <NavDropdown.Item href="/settings">
                               Settings
                             </NavDropdown.Item>
-                            <NavDropdown.Item href="/settings">
+                            <NavDropdown.Item href="/ai">
                               AI Blog Generator
                             </NavDropdown.Item>
                             <NavDropdown.Item onClick={async () => { 
