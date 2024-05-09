@@ -12,6 +12,7 @@ import {Row} from 'react-bootstrap';
 import { faCircleDown } from "@fortawesome/free-solid-svg-icons";
 import { useState } from 'react';
 import Notiflix from 'notiflix';
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
 
 async function GetBlog(blogID) {
 //console.log(blogID)
@@ -130,7 +131,7 @@ const ViewBlog = () => {
             <AppNavbar />
             <div className='container'>
                 <Card>
-                <Card.Header>Author: {data[0].Author} {data[0].user == session.user.id ? <Button style={{marginLeft: "74%"}}>Edit Blog</Button> : ""}</Card.Header>
+                <Card.Header>Author: {data[0].Author} {data[0]?.user == session?.user.id ? <Button onClick={() => window.location.href='/edit?id='+ data[0].id} style={{marginLeft: "74%"}}>Edit Blog</Button> : ""}</Card.Header>
                     
                     <Card.Body>
                         <Card.Title>{data[0].title}</Card.Title>
@@ -141,15 +142,15 @@ const ViewBlog = () => {
                         <Card.Img style={{borderRadius: 10}} variant="top" src={data[0].imageURL} />
                         {console.log(data[0])}
                         <Row style={{marginTop: 20, marginLeft: 20}}>
-                            <Button onClick={() =>{ handleUpvote(blogID, session.user.id, data[0])}} style={{width: 100}} variant='success'><FontAwesomeIcon icon={faCircleUp} beat /> </Button>
-                            <Button onClick={() => handleDownvote(blogID, session.user.id, data[0])} style={{width: 100}}  variant='danger'><FontAwesomeIcon icon={faCircleDown} beat /> </Button>
+                            <Button onClick={() =>{ handleUpvote(blogID, session?.user?.id, data[0])}} style={{width: 100}} variant='success'><FontAwesomeIcon icon={faCircleUp} beat /> </Button>
+                            <Button onClick={() => handleDownvote(blogID, session?.user?.id, data[0])} style={{width: 100}}  variant='warning'><FontAwesomeIcon icon={faCircleDown} beat /> </Button>
                             <div style={{width: 200}} >Upvote Count: {data[0].upvoted_by?.length || 0}</div>
                             <div style={{width: 200}} >Downvote Count: {data[0].downvoted_by?.length || 0}</div>
                         </Row>
                     </Card.Body>
                     
                     
-                    <Card.Footer> <small className="text-muted">Created {(data[0].created_at).split('T')[0] }</small></Card.Footer>
+                    <Card.Footer> <small className="text-muted">Created {(data[0].created_at).split('T')[0] }</small>  {data[0]?.user == session?.user.id ? <Button variant='danger' style={{marginLeft: "78%"}}>Delete Blog <FontAwesomeIcon icon={faTrash} beat /></Button> : "" }</Card.Footer>
                 </Card>
                
                

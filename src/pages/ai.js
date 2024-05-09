@@ -22,7 +22,7 @@ const response = await openai.chat.completions.create({
   messages: [
     {
       "role": "user",
-      "content": "You are a helpful assistant for a blogging platform called blogsomething.com, please generate a random blog, it should have a title and some content."
+      "content": "You are a helpful assistant for a blogging platform called blogsomething.com, please generate a random blog, it should have a title and some content. Please format the output as HTML the title should be h1 and content should be p."
     }
   ],
   temperature: 1,
