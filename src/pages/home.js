@@ -73,7 +73,16 @@ function Home() {
             <AppFooter/>
             </>
         )
-    }else{
+    }
+    if(blogs.length === 0){
+        return (
+            <>
+            <AppNavbar/>
+            <div className='container'><h1>There are no blogs in the database :( </h1></div>
+            <AppFooter/>
+            </>
+        )
+    }
         return (
             <>
             <AppNavbar/>
@@ -85,9 +94,10 @@ function Home() {
                         <Card.Header>Author: {blog.Author}</Card.Header>
                             
                             <Card.Body>
-                                <Card.Title>{blog.title}</Card.Title>
+                                <Card.Title> <h1>{blog.title}</h1></Card.Title>
                                 <Card.Text>
-                                    {blog.blog}
+                                    <p>{blog.blog}</p>
+                                    
         
                                 </Card.Text>
                                 <Card.Img style={{borderRadius: 10}} variant="top" src={blog.imageURL} />
@@ -118,7 +128,7 @@ function Home() {
             <AppFooter/>
             </>
         )
-    }
+    
 
 }
   export default Home;
