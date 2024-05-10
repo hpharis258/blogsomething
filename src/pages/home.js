@@ -13,7 +13,7 @@ async function getBlogs(start, end) {
     const { data, error } = await supabase
     .from('blogs')
     .select('*')
-    .range(start, end).order('upvoted_by', {ascending: true});
+    .range(start, end).order('rating', {ascending: false});
     if (error) {
         console.log(error)
         return error;

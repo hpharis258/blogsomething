@@ -9,6 +9,9 @@ import { Row } from "react-bootstrap";
 import Pagination from "react-bootstrap/Pagination";
 
 async function SearchBlogs(searchTerm) {
+    let splitSearchTerm = searchTerm.split(' ')
+    searchTerm = splitSearchTerm.join('|')
+    console.log(searchTerm)
     const { data, error } = await supabase
     .from('blogs')
     .select()
@@ -25,6 +28,9 @@ async function SearchBlogs(searchTerm) {
 function SearchPage () {
     const location = useLocation();
     const searchTerm = new URLSearchParams(location.search).get('searchTerm');
+    //alert(searchTerm)
+    
+    console.log(searchTerm)
     const [blogs, setBlogs] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     useEffect(() => {
@@ -45,7 +51,7 @@ function SearchPage () {
             </>
         )
     }
-    if(blogs.length === 0){
+    if(blogs?.length === 0){
         return (
             <>
             <AppNavbar />
@@ -59,7 +65,7 @@ function SearchPage () {
     <AppNavbar />
     <div className='vh-100 container'>
         <div style={{marginLeft: 20}} className="mb-4"><h3>{blogs.length} blogs matched the search term {searchTerm}</h3></div> 
-                {blogs.map((blog) => {
+                {blogs?.map((blog) => {
                     return (
                         <div style={{marginTop:10, marginBottom:10}} className='container' key={blog.id}>
                         <Card>
@@ -90,11 +96,7 @@ function SearchPage () {
                    
                     )
                 })}
-                {/* <Pagination>
-                    <Pagination.Prev onClick={() => goToPrevpage(currentPage, start, end, setStart, setEnd, setCurrentPage)} />
-                    <Pagination.Item>{currentPage}</Pagination.Item>
-                    <Pagination.Next onClick={() => goToNextpage(currentPage, start, end, setStart, setEnd, setCurrentPage, blogs)} />
-                </Pagination> */}
+              
             </div>
        
     <AppFooter />

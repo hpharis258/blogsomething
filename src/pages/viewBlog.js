@@ -55,8 +55,18 @@ async function handleUpvote(blogID, currentUser, data) {
         data.upvoted_by = []
     }
     data.upvoted_by.push(currentUser)
+    let CurrentRating = 0;
+    if(data.downvoted_by?.length === 0 || !data.downvoted_by)
+    {
+        CurrentRating = data.upvoted_by?.length;
+    }else
+    {
+        CurrentRating = data.upvoted_by?.length - data.downvoted_by?.length;
+    }
+    
+
   
-    await supabase.from('blogs').update({upvoted_by:  data.upvoted_by}).eq('id', blogID);
+    await supabase.from('blogs').update({upvoted_by:  data.upvoted_by, rating: CurrentRating}).eq('id', blogID);
     Notiflix.Report.success(
         'Success',
         'Upvoted!',
@@ -80,7 +90,16 @@ async function handleDownvote(blogID, currentUser, data) {
         data.downvoted_by = []
     }
     data.downvoted_by?.push(currentUser)
-    await supabase.from('blogs').update({downvoted_by:  data.downvoted_by}).eq('id', blogID);
+    let CurrentRating = 0;
+    if(!data.upvoted_by || data.upvoted_by?.length === 0)
+    {
+        CurrentRating = data.downvoted_by?.length;
+    }else
+    {
+        CurrentRating = data.upvoted_by?.length - data.downvoted_by?.length;
+    }
+    
+    await supabase.from('blogs').update({downvoted_by:  data.downvoted_by, rating: CurrentRating}).eq('id', blogID);
     Notiflix.Report.success(
         'Success',
         'Downvoted!',
