@@ -10,7 +10,8 @@ function About() {
         </div>
         <div style={{marginLeft: "25%", marginRight: "25%", marginBottom: 20}} class="d-flex justify-content-center">
             <p>
-            Welcome to BlogSomething.com, where every word matters and every voice can echo around the world! We are more than just a blogging website—we are a vibrant community of writers, thinkers, and dreamers. Our platform was founded in 2024 with a simple mission: to empower individuals to share their thoughts, ideas, and stories with a global audience.
+            Welcome to BlogSomething.com, where every word matters and every voice can echo around the world! We are more than just a blogging website—we are a vibrant community of writers, thinkers, and dreamers. Our platform was founded in 2024 by Haroldas Varanauskas as a third year computer science project, investigating the shift to JavaScript framework based websites and how they affect website performance and user experience. Another mission of the website is to empower individuals to share their thoughts, ideas, and stories with a global audience.
+
             </p>
         </div>
         <div class="d-flex justify-content-center">
