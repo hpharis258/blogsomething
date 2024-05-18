@@ -110,7 +110,7 @@ function AppNavbar() {
                     >
                       <Offcanvas.Header closeButton>
                         <Offcanvas.Title id={`offcanvasNavbarLabel-expand-${'md'}`}>
-                          BlogsSomething.com
+                          BlogSomething.com
                         </Offcanvas.Title>
                       </Offcanvas.Header>
                       <Offcanvas.Body>
