@@ -29,8 +29,9 @@ root.render(
           <Route exact path='/viewBlog' element={<ViewBlog/>} />
           <Route exact path='/settings' element={<Settings/>} />
           <Route exact path='/search' element={<SearchPage/>} />
-          <Route exact path='/search/*' element={<SearchPage/>} />
+          
           <Route exact path='/ai' element={<AI/>} />
+          <Route exact path='/*' element={<PageNotFound/>} />
       </Routes>
 
     </BrowserRouter>
