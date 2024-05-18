@@ -51,7 +51,7 @@ function AppNavbar() {
                     >
                       <Offcanvas.Header closeButton>
                         <Offcanvas.Title id={`offcanvasNavbarLabel-expand-${'md'}`}>
-                          Offcanvas
+                          BlogSomething.com
                         </Offcanvas.Title>
                       </Offcanvas.Header>
                       <Offcanvas.Body>
@@ -106,10 +106,11 @@ function AppNavbar() {
                       id={`offcanvasNavbar-expand-${'md'}`}
                       aria-labelledby={`offcanvasNavbarLabel-expand-${'md'}`}
                       placement="end"
+
                     >
                       <Offcanvas.Header closeButton>
                         <Offcanvas.Title id={`offcanvasNavbarLabel-expand-${'md'}`}>
-                          Offcanvas
+                          BlogsSomething.com
                         </Offcanvas.Title>
                       </Offcanvas.Header>
                       <Offcanvas.Body>
